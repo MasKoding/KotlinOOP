@@ -36,6 +36,7 @@ class GameSederhanaSuit {
         println("Computer Memilih : $computerOpsi")
 
         when(opsi1){
+//KONDISI PERTAMA
             "B"->when(computerOpsi){
                 "G"->{
                     status="Win"
@@ -49,10 +50,43 @@ class GameSederhanaSuit {
                     decreamentScore()
                 }
             }
+//            KONDISI KEDUA
+            "G"->when(computerOpsi){
+                "G"->{
+                    status="Draw"
+
+                }
+                "B"->{
+                    status="Lose"
+                    decreamentScore()
+                }
+                "K"->{
+                    status="Win"
+                    increamentScore()
+                }
+            }
+//            KONDISI KETIGA
+            "K"->when(computerOpsi){
+                "G"->{
+                    status="Lose"
+                    decreamentScore()
+                }
+                "B"->{
+                    status="Win"
+                    increamentScore()
+                }
+                "K"->{
+                    status="Draw"
+                }
+            }
         }
-
+            println("Status : $status")
     }
+}
 
-
-
+fun main(){
+    print("Masukkan Nama Anda:")
+    var nama:String = readLine()!!.toString()
+    var gameSederhanaSuit = GameSederhanaSuit(nama)
+    gameSederhanaSuit.gameStart()
 }
